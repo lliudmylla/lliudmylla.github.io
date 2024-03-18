@@ -7,3 +7,5 @@
 - [Практична робота №3](https://lliudmylla.github.io/pr3/)
 - [Практична робота №4](https://lliudmylla.github.io/pr4/)
 - [Практична робота №5](https://lliudmylla.github.io/pr5/)
+- [Контрольна робота №1](https://lliudmylla.github.io/Kr/)
+
