@@ -108,7 +108,8 @@ function resetGame() {
   document.getElementById("settings").style.display = "block";
   score = 0;
   scoreValueElement.textContent = score;
-  timeLeft = "";
+  const { time } = getGameSettings(); 
+  timeLeft = time;
   timeLeftElement.textContent = timeLeft;
   clickSquareOnceFlag = false;
 }
