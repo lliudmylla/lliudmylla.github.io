@@ -21,31 +21,34 @@ var generateButton = document.createElement("button");
 generateButton.innerHTML = "Згенерувати";
 document.body.appendChild(generateButton);
 
-generateButton.addEventListener("click", function() {
-    var div = document.createElement("div");
-    div.style.backgroundColor = "blue";
-    div.style.width = "30px";
-    div.style.height = select.value + "px";
-    document.body.appendChild(div);
+var div = document.createElement("div");
+div.style.backgroundColor = "blue";
+div.style.width = "30px";
+div.style.height = select.value + "px";
+document.body.appendChild(div);
 
-    var leftButton = document.createElement("button");
-    leftButton.innerHTML = "Посунути вліво";
-    document.body.appendChild(leftButton);
+var leftButton = document.createElement("button");
+leftButton.innerHTML = "Посунути вліво";
+document.body.appendChild(leftButton);
 
-    var rightButton = document.createElement("button");
-    rightButton.innerHTML = "Посунути вправо";
-    document.body.appendChild(rightButton);
+var rightButton = document.createElement("button");
+rightButton.innerHTML = "Посунути вправо";
+document.body.appendChild(rightButton);
 
- var divPosition = 0;
-    leftButton.addEventListener("click", function() {
-        divPosition -= 20;
-        div.style.position = "relative";
-        div.style.left = divPosition + "px";
-    });
-
-    rightButton.addEventListener("click", function() {
-        divPosition += 20;
-        div.style.position = "relative";
-        div.style.left = divPosition + "px";
-    });
+var divPosition = 0;
+leftButton.addEventListener("click", function() {
+    divPosition -= 20;
+    div.style.position = "relative";
+    div.style.left = divPosition + "px";
 });
+
+rightButton.addEventListener("click", function() {
+    divPosition += 20;
+    div.style.position = "relative";
+    div.style.left = divPosition + "px";
+});
+
+generateButton.addEventListener("click", function() {
+    div.style.height = select.value + "px";
+});
+
