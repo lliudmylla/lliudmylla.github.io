@@ -38,13 +38,13 @@ generateButton.addEventListener("click", function() {
 
  var divPosition = 0;
     leftButton.addEventListener("click", function() {
-        divPosition += 20;
+        divPosition -= 20;
         div.style.position = "relative";
         div.style.left = divPosition + "px";
     });
 
     rightButton.addEventListener("click", function() {
-        divPosition -= 20;
+        divPosition += 20;
         div.style.position = "relative";
         div.style.left = divPosition + "px";
     });
