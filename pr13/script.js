@@ -29,10 +29,10 @@ function getGameSettings() {
   let time;
   switch (difficultyElement.value) {
     case "baby":
-      time = 3;
+      time = 6;
       break;
     case "teenager":
-      time = 2;
+      time = 3;
       break;
     case "adult":
       time = 1;
