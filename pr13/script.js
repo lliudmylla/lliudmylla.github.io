@@ -28,13 +28,13 @@ function getGameSettings() {
   const color = colorElement.value;
   let time;
   switch (difficultyElement.value) {
-    case "easy":
+    case "baby":
       time = 3;
       break;
-    case "medium":
+    case "teenager":
       time = 2;
       break;
-    case "hard":
+    case "adult":
       time = 1;
       break;
   }
