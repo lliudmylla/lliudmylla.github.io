@@ -29,12 +29,12 @@ generateButton.addEventListener("click", function() {
     document.body.appendChild(div);
 
     var leftButton = document.createElement("button");
-    upButton.innerHTML = "Посунути вліво";
-    document.body.appendChild(upButton);
+    leftButton.innerHTML = "Посунути вліво";
+    document.body.appendChild(leftButton);
 
     var rightButton = document.createElement("button");
-    downButton.innerHTML = "Посунути вправо";
-    document.body.appendChild(downButton);
+    rightButton.innerHTML = "Посунути вправо";
+    document.body.appendChild(rightButton);
 
     var divPosition = 0;
     leftButton.addEventListener("click", function() {
