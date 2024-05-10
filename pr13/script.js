@@ -100,8 +100,9 @@ function endGame() {
   clearInterval(timerInterval);
   squareElement.style.display = "none";
   alert("GG! Score: " + score);
-  hideGameUI();
   resetGame();
+  displayGameUI();
+  hideSettings();
 }
 
 function resetGame() {
