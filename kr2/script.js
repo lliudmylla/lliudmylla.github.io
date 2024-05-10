@@ -40,12 +40,12 @@ generateButton.addEventListener("click", function() {
 
 leftButton.addEventListener("click", function() {
     divPosition -= 20;
-    div.style.left = divPosition + "px";
+    div.style.right = divPosition + "px";
 });
 
 rightButton.addEventListener("click", function() {
     divPosition += 20;
-    div.style.left = divPosition + "px";
+    div.style.right = divPosition + "px";
 });
 
 });
