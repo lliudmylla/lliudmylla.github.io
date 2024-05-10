@@ -36,16 +36,16 @@ generateButton.addEventListener("click", function() {
     rightButton.innerHTML = "Посунути вправо";
     document.body.appendChild(rightButton);
 
-    var divPosition = 0;
-    leftButton.addEventListener("click", function() {
-        divPosition -= 20;
-        div.style.position = "relative";
-        div.style.left = divPosition + "px";
-    });
+  var divPosition = 0;
 
-    rightButton.addEventListener("click", function() {
-        divPosition += 20;
-        div.style.position = "relative";
-        div.style.left = divPosition + "px";
-    });
+leftButton.addEventListener("click", function() {
+    divPosition -= 20;
+    div.style.left = divPosition + "px";
+});
+
+rightButton.addEventListener("click", function() {
+    divPosition += 20;
+    div.style.left = divPosition + "px";
+});
+
 });
