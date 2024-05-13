@@ -19,3 +19,6 @@
 - [Практична робота №12](https://lliudmylla.github.io/pr12/)
 - [Практична робота №13](https://lliudmylla.github.io/pr13/)
 - [Практична робота №14](https://lliudmylla.github.io/pr14/)
+- [Практична робота №15](https://lliudmylla.github.io/pr15/)
+- [Практична робота №16](https://lliudmylla.github.io/pr16/)
+- [Практична робота №17](https://lliudmylla.github.io/pr17/)
