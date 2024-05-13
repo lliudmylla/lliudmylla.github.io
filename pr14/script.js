@@ -1,117 +1,102 @@
-let currentGameIndex = 0;
-let currentSteps = 0;
-let games = [];
-let startTime;
-let timer;
-let initialGameStates = [];
+let start_btn = document.getElementById("start_btn");
+let board = document.getElementById("board");
+let timer_display = document.getElementById("timer");
+let target_display = document.getElementById("target");
+let moves_display = document.getElementById("moves");
 
-const fetching = async () => {
-    try {
-        const response = await fetch('gameLightOut.json');
-        const data = await response.json();
-        games = data;
-        initialGameStates = games.map(game => JSON.parse(JSON.stringify(game.initial_state)));
-        setupGame(currentGameIndex);
-    } catch (error) {
-        console.error('Failed to fetch game data:', error);
-    }
-};
+let timer_interval;
+let board_size = 5;
+let moves = 0;
+let levels = [];
+let current_lvl = 0;
 
-function startGame(game) {
-    clearInterval(timer);
-    startTime = Date.now();
-    timer = setInterval(updateTime, 1000);
+fetch("levels.json")
+  .then((response) => response.json())
+  .then((data) => {
+    levels = data.levels;
+  });
 
-    currentSteps = 0;
-    updateSteps();
+start_btn.addEventListener("click", function () {
+  if (start_btn.textContent === "Start Game") {
+    start_game();
+  } else {
+    new_game();
+  }
+});
 
-    document.getElementById('minSteps').textContent = game.minimum_steps_to_win;
+function start_game() {
+  start_btn.textContent = "Change lvl";
+  moves = 0;
+  moves_display.textContent = moves;
 
-    const board = document.getElementById('gameBoard');
-    board.innerHTML = '';
-
-    game.initial_state.forEach(function(row, r) {
-        const tr = board.insertRow();
-        row.forEach(function(cell, c) {
-            const td = tr.insertCell();
-            td.className = cell === 1 ? 'lightOn' : '';
-            td.onclick = function() {
-                toggleLights(r, c, game.initial_state);
-            };
-        });
-    });
+  load_level(current_lvl);
+  start_timer();
 }
 
-function toggleLights(r, c, grid) {
-    function toggle(r, c) {
-        if (r >= 0 && r < 5 && c >= 0 && c < 5) {
-            grid[r][c] = 1 - grid[r][c];
-            const cell = document.getElementById('gameBoard').rows[r].cells[c];
-            cell.className = grid[r][c] === 1 ? 'lightOn' : '';
+function new_game() {
+  current_lvl = (current_lvl + 1) % levels.length;
+  load_level(current_lvl);
+
+  moves = 0;
+  moves_display.textContent = moves;
+
+  start_timer();
+}
+
+function load_level(level) {
+  let matrix = levels[level].matrix;
+
+  board.innerHTML = "";
+
+  matrix.forEach((row, rowIndex) => {
+    row.forEach((cell, colIndex) => {
+      let cellElem = document.createElement("div");
+      cellElem.classList.add("cell", cell === 1 ? "on" : "off");
+      cellElem.addEventListener("click", function () {
+        toggle_cells(rowIndex, colIndex);
+        moves++;
+        moves_display.textContent = moves;
+
+        if (check_win(matrix)) {
+          clearInterval(timer_interval);
+          alert(`You won in ${moves} moves!`);
+          new_game();
         }
-    }
+      });
+      board.appendChild(cellElem);
+    });
+  });
 
-    toggle(r, c);
-    toggle(r - 1, c);
-    toggle(r + 1, c);
-    toggle(r, c - 1);
-    toggle(r, c + 1);
-
-    currentSteps++;
-    updateSteps();
-
-    if (checkWin(grid)) {
-        clearInterval(timer);
-        setTimeout(function() {
-            alert("Вітаю! Ви завершили гру!");
-            restart();
-        }, 1000);
-    }
+  target_display.textContent = levels[level].min_steps;
 }
 
-function checkWin(grid) {
-    return grid.every(row => row.every(cell => cell === 0));
+function toggle_cells(row, col) {
+  toggle_cell(row, col);
+  toggle_cell(row - 1, col);
+  toggle_cell(row + 1, col);
+  toggle_cell(row, col - 1);
+  toggle_cell(row, col + 1);
 }
 
-function changeCombination() {
-    currentGameIndex = (currentGameIndex + 1) % games.length;
-    setupGame(currentGameIndex);
+function toggle_cell(row, col) {
+  if (row >= 0 && row < board_size && col >= 0 && col < board_size) {
+    let cellElem = board.children[row * board_size + col];
+    cellElem.classList.toggle("on");
+    cellElem.classList.toggle("off");
+  }
 }
 
-function restart() {
-    currentSteps = 0;
-    resetToInitialState();
+function check_win(matrix) {
+  return matrix.every((row) => row.every((cell) => cell === 0));
 }
 
-function updateSteps() {
-    document.getElementById('currentSteps').textContent = currentSteps;
+function start_timer() {
+  clearInterval(timer_interval);
+  timer_display.textContent = 0;
+
+  let seconds = 0;
+  timer_interval = setInterval(() => {
+    seconds++;
+    timer_display.textContent = seconds;
+  }, 1000);
 }
-
-function updateTime() {
-    const elapsed = Math.floor((Date.now() - startTime) / 1000);
-    document.getElementById('gameTime').textContent = elapsed;
-}
-
-window.onload = fetching;
-
-const savedGameIndex = localStorage.getItem('currentGameIndex');
-if (savedGameIndex !== null) {
-    currentGameIndex = parseInt(savedGameIndex);
-}
-
-function setupGame(index) {
-    const game = games[index];
-    startGame(game);
-}
-
-function resetSteps() {
-    currentSteps = 0;
-    updateSteps();
-}
-
-function resetToInitialState() {
-    games[currentGameIndex].initial_state = JSON.parse(JSON.stringify(initialGameStates[currentGameIndex]));
-    startGame(games[currentGameIndex]);
-}
-
-document.getElementById('newGameButton').addEventListener('click', restart);
