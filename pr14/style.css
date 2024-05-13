@@ -21,7 +21,7 @@ body {
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #6c63ff;
+  background-color: #f011dd;
   color: white;
   font-size: 18px;
   transition: background-color 0.3s;
@@ -47,7 +47,7 @@ body {
 }
 
 .cell.on {
-  background-color: #6c63ff;
+  background-color: #f011dd;
 }
 
 .cell.off {
