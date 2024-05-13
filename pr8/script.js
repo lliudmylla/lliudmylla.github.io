@@ -1,16 +1,22 @@
-import { speak as speakGoodbye, speakAdd as speakAdditionalGoodbye} from "./lib/SpeakGoodBye.js"
-import { speak as speakHello } from "./lib/SpeakHello.js"
+import { speak as speakHello } from './library/SpeakHello.js';
+import { speak as speakGoodbye, speakAdd as speakAddGoodbye } from './library/SpeakGoodBye.js';
 
-(function() {
-  var names = ["Bill", "John", "Jen", "Jason", "Paul", "Frank", "Steven", "Larry", "Paula", "Laura", "Jim"];
-  for (let i = 0; i < names.length; i++) {
-    let currentName = names[i];
-    if (currentName.charAt(0).toLowerCase() == 'j') {
-      speakGoodbye(currentName);
-    } else if (currentName.charAt(currentName.length - 1).toLowerCase() == "a") {
-      speakAdditionalGoodbye(currentName)
+var names = ["Bill", "John", "Jen", "Jason", "Paul", "Frank", "Steven", "Larry", "Paula", "Laura", "Jim"];
+
+for (var i = 0; i < names.length; i++) {
+    if (names[i][0].toLowerCase() === 'j') {
+        speakGoodbye(names[i]);
     } else {
-      speakHello(currentName);
+        speakHello(names[i]);
     }
-  }
-})();
+}
+
+var additionalSelection = function(name) {
+    if (name.charAt(name.length - 1).toLowerCase() === 'a') {
+        console.log(name + " ends with 'a'");
+    }
+};
+
+names.forEach(function(name) {
+    additionalSelection(name);
+});
