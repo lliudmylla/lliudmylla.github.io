@@ -10,7 +10,7 @@ let moves = 0;
 let levels = [];
 let current_lvl = 0;
 
-fetch("levels.json")
+fetch("gamelightout.json")
   .then((response) => response.json())
   .then((data) => {
     levels = data.levels;
