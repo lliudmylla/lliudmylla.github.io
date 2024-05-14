@@ -1,6 +1,6 @@
 .header {
     background-color: white;
-    color: #F0E68C;
+    color: #8aa4de;
 }
 
 .header-content {
@@ -32,7 +32,7 @@
     font-weight: 700;
     padding: 10px 0;
     text-transform: uppercase;
-    text-shadow: #BDB76B 2px 2px;
+    text-shadow: #0f2f73 2px 2px;
 }
 
 .logo-name a {
@@ -96,7 +96,7 @@
     background-repeat: no-repeat;
     flex-direction: column;
     justify-content: flex-end;
-    color: #F0E68C;
+    color: #8aa4de;
     transition: all 0.25s ease;
     font-size: 1em;
     padding: 5px ;
@@ -104,7 +104,7 @@
 }
 
 .navbar-content ul > li:hover {
-    background-color: #BDB76B;
+    background-color: #0f2f73;
     color: white;
 }
 
@@ -136,7 +136,7 @@
 
 .link-number {
     display: flex;
-    color: #F0E68C;
+    color: #8aa4de;
     font-size: 1.5rem;
     line-height: 30px;
     font-weight: inherit;
@@ -157,7 +157,7 @@
 }
 
 .link-number:hover {
-    background-color: #BDB76B;
+    background-color: #0f2f73;
     color: white;
 }
 
@@ -226,13 +226,13 @@
     .link-number {
         width: 100%;
         background-color: #FFFFFF;
-        border: solid 3px #BDB76B;
+        border: solid 3px #0f2f73;
         border-radius: 5px;
         justify-content: center;
     }
 
     .communication p {
-        color: #BDB76B;
+        color: #0f2f73;
     }
 
     .logo-img {
@@ -247,7 +247,7 @@
 /* MAIN */
 
 main {
-    background-color: #EEE8AA;
+    background-color: #aacdee;
 }
 
 .slider {
@@ -330,7 +330,7 @@ main {
 .catalog:hover,
 .sale:hover,
 .map:hover {
-    box-shadow: 2px 2px 2px #BDB76B; 
+    box-shadow: 2px 2px 2px #0f2f73; 
 }
 
 .catalog p,
@@ -344,7 +344,7 @@ main {
     width: 100%;
     padding: 10px 0;
     color: white;
-    background-color: #F0E68C;
+    background-color: #8aa4de;
 }
 
 .map iframe {
