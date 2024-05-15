@@ -25,7 +25,7 @@ function calculate(operation) {
       if (operand2 === 0) {
         document.getElementById(
           "result"
-        ).innerText = ` Second operand cannot be 0`;
+        ).innerText = `⛔ Second operand cannot be 0`;
         return;
       }
       result = operand1 / operand2;
@@ -33,7 +33,7 @@ function calculate(operation) {
     default:
       if (operand1 <= 0) {
         document.getElementById("result").innerText =
-          " First operand should be higher than 0";
+          "⛔ First operand should be higher than 0";
         return;
       }
       result = Math[operation](operand1);
@@ -57,10 +57,3 @@ function setMethodDescription(operation) {
       console.error("Error fetching method description:", error)
     );
 }
-    });
-
-    document.getElementById("tan-button").addEventListener("click", function () {
-        const op1 = parseFloat(document.getElementById("op1").value);
-        fetchData("tan");
-    });
-});
